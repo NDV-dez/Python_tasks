@@ -524,3 +524,101 @@ if has_3_or_6_or_9:
 else:
     print(f'В число {number} не входят цифры 3, 6 или 9')
 
+# 4.32. Дано натуральное число n (n > 9999). Выяснить, является ли оно палиндромом 
+# ("перевертышем") с учетом четырех цифр, как, например, числа 7777, 8338, 0330 и т. п. (
+# Палиндромом называется число, десятичная запись которого читается одинаково слева направо и справа налево.) 
+
+print("Задание 4.32")
+print("--------------------------------")
+
+try:
+    number = int(input('Введите натуральное число: '))
+
+except ValueError:
+    print('Ошибка! Введите целое число.')
+    exit()
+
+
+if number < 0:
+    print('Число должно быть натуральным (положительным)!')
+    exit()
+if number <= 9999:
+    print('Число должно быть больше 9999!')
+    exit()
+
+last_four_digits = number % 10000
+digit_1 = last_four_digits % 10
+digit_2 = last_four_digits // 10 % 10
+digit_3 = last_four_digits // 100 % 10
+digit_4 = last_four_digits // 1000
+
+if digit_1 == digit_4 and digit_2 == digit_3:
+    print(f'Последние 4 цифры числа {number} ({last_four_digits:04d}) образуют палиндром')
+else:
+    print(f'Последние 4 цифры числа {number} ({last_four_digits:04d}) не образуют палиндром')
+
+# 4.33. Дано натуральное число n (n > 9999). 
+# Выяснить, верно ли, что это число содержит 
+# ровно три одинаковые цифры с учетом четырех цифр,
+# как, например, числа 3363, 4844, 0300 и т. п. 
+
+print("Задание 4.33")
+print("--------------------------------")
+
+try:
+    number = int(input('Введите натуральное число: '))
+
+except ValueError:
+    print('Ошибка! Введите целое число.')
+    exit()
+
+
+if number < 0:
+    print('Число должно быть натуральным (положительным)!')
+    exit()
+if number <= 9999:
+    print('Число должно быть больше 9999!')
+    exit()
+
+last_four_digits = number % 10000
+d1 = last_four_digits // 1000
+d2 = last_four_digits // 100 % 10
+d3 = last_four_digits // 10 % 10
+d4 = last_four_digits % 10
+
+if (d1 == d2 == d3 and d1 != d4) or (d1 == d2 == d4 and d1 != d3) or (d1 == d3 == d4 and d1 != d2) or (d2 == d3 == d4 and d2 != d1):
+    print(f'В последних 4 цифрах числа {number} ({last_four_digits:04d}) есть ровно три одинаковые цифры')
+else:
+    print(f'В последних 4 цифрах числа {number} ({last_four_digits:04d}) нет ровно трех одинаковых цифр')
+
+# 4.34. Дано натуральное число n (n > 9999). 
+# Выяснить, различны ли все четыре цифры этого числа (с учетом четырех цифр). 
+# Например, в числе 3678 все цифры различны, в числе 0023 — нет.
+
+print("Задание 4.34")
+print("--------------------------------")
+
+try:
+    number = int(input('Введите натуральное число: '))
+
+except ValueError:
+    print('Ошибка! Введите целое число.')
+    exit()
+
+if number < 0:
+    print('Число должно быть натуральным (положительным)!')
+    exit()
+if number <= 9999:
+    print('Число должно быть больше 9999!')
+    exit()
+
+last_four_digits = number % 10000
+d1 = last_four_digits // 1000
+d2 = last_four_digits // 100 % 10
+d3 = last_four_digits // 10 % 10
+d4 = last_four_digits % 10
+
+if d1 != d2 and d1 != d3 and d1 != d4 and d2 != d3 and d2 != d4 and d3 != d4:
+    print(f'В последних 4 цифрах числа {number} ({last_four_digits:04d}) все цифры разные')
+else:
+    print(f'В последних 4 цифрах числа {number} ({last_four_digits:04d}) не все цифры разные')
