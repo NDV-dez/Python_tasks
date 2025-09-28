@@ -358,17 +358,71 @@ from math import sqrt
 # Найти номера элементов, оканчивающихся цифрой 0 
 # (известно, что такие элементы в массиве есть). 
 
-lst = [12, 124, 412, 12, 50, 9, 760, 91]
+# lst = [12, 124, 412, 12, 50, 9, 760, 91]
 
-lst_num = []
+# lst_num = []
 
-for el in range(len(lst)):
-    if lst[el] % 10 == 0:
-        lst_num.append(el+1)
+# for el in range(len(lst)):
+#     if lst[el] % 10 == 0:
+#         lst_num.append(el+1)
 
-print(lst_num)
-
-
+# print(lst_num)
 
 
 
+# def is_prime(n):
+#     if n < 2:
+#         return False
+    
+#     for i in range(2, int(n**0.5) + 1):
+#         if n % i == 0:
+#             return False
+#     return True
+
+# lst = [(x, [y for y in range(1,20+1) if x % y == 0 and is_prime(y)]) for x in range(2, 20+1)]
+
+
+# 1) 
+result = lambda x: x ** 2
+# 2)
+result2 = lambda x, y: (x + y)
+# 3)
+result3 = lambda x: 'четное' if x % 2 == 0 else 'нечетное'
+# 4)
+result4 = lambda x, y: x if x > y else y
+# 5)
+result5 = lambda x: abs(x)
+# 6)
+num = [1,2,3,4,5,6,7,8,9,10]
+res = list(filter(lambda x: x % 2 == 0, num))
+# 7)
+num = [1,2,3,4,5,6,7,8,9,10]
+res = list(map(lambda x: x * 2, num))
+# 8)
+num = [1,2,3,4,-5,6,7,-18,9,-10]
+result8 = len(list(filter(lambda x: x > 0, num)))
+
+#Отсортировать список списков по длине каждого внутреннего списка
+lists = [[1,2,3],[4,5],[6,7,8,9]] #[[4,5],[1,2,3],[6,7,8,9]]
+srted_lst = sorted(lists, key=len)
+#по последнему элементу каждого внутреннего списка.
+lists = [[4,5],[1,2,3],[6,7,8,9]]
+sorted_lst = sorted(lists, key=lambda x: x[-1])
+#по четности первого элемента
+lists = [[2,2],[5,4],[4,6]]
+sorted_lst = sorted(lists, key=lambda x: x[0] % 2)
+#по количеству четных чисел во внутреннем списке
+lists = [[1,2,3], [2,4,6], [3,5]] 
+sorted_lst = sorted(lists, key=lambda x: len(list(filter(lambda y: y % 2 == 0, x))))
+#отсортировать по сумме квадратов элементов каждого внутренного списка
+lists = [[1,2,3], [2,4,6], [3,5]]
+sorted_lst = sorted(lists, key=lambda x: sum(map(lambda y: y**2, x)))
+#проверить наличие хотя бы одного положительного числа в списке
+lists = [-5,-6,-6,1,2]
+has_positive = any(map(lambda x: x > 0, lists))
+#проверить на наличие того что все элементы четные
+lists = [-5,-6,-6,1,2]
+all_even = all(map(lambda x: x % 2 == 0, lists))
+#отсортировать по количеству элементов равных 0
+lists = [[0,2,3],[4,0,0],[6,7,8,9]]
+sorted_lst = sorted(lists, key=lambda x: len(list(filter(lambda y: y == 0, x))))
