@@ -1222,3 +1222,298 @@ def main():
         print('Не все слова в списке начинаются с буквы "a".')
 
 main()
+
+
+#  ДОМАШНЕЕ ЗАДАНИЕ No24 KEY, ANY, ALL, IN.
+# ============== Задачи на any,all,in: ==============
+
+# 1. Даны два списка чисел. Проверьте, что никакой элемент из первого списка не содержится во втором списке.
+list1 = [10, 11, 12]
+list2 = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+def check_no_common_elements(list1, list2):
+    return not any(elem in list2 for elem in list1)
+
+def main():
+    print(f'Первый список: {list1}')
+    print(f'Второй список: {list2}')
+    if check_no_common_elements(list1, list2):
+        print('Никакой элемент из первого списка не содержится во втором списке.')
+    else:
+        print('Есть общие элементы между двумя списками.')
+
+main()
+
+# 2. Даны два списка чисел. Проверьте, что хотя бы один элемент из первого списка содержится во втором списке.
+list1 = [3, 10, 15]
+list2 = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+def check_at_least_one_common_element(list1, list2):
+    return any(elem in list2 for elem in list1)
+
+def main():
+    print(f'Первый список: {list1}')
+    print(f'Второй список: {list2}')
+    if check_at_least_one_common_element(list1, list2):
+        print('Хотя бы один элемент из первого списка содержится во втором списке.')
+    else:
+        print('Нет общих элементов между двумя списками.')
+
+main()
+
+# 3. Даны два списка чисел. Проверьте, что все элементы первого списка, которые больше 5, содержатся во втором списке.
+list1 = [3, 6, 7, 9]
+list2 = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+def check_all_greater_than_five_in_second(list1, list2):
+    return all(elem in list2 for elem in list1 if elem > 5)
+
+def main():
+    print(f'Первый список: {list1}')
+    print(f'Второй список: {list2}')
+    if check_all_greater_than_five_in_second(list1, list2):
+        print('Все элементы первого списка, которые больше 5, содержатся во втором списке.')
+    else:
+        print('Не все элементы первого списка, которые больше 5, содержатся во втором списке.')
+
+main()
+
+# 4. Даны два списка чисел. Проверьте, что все элементы второго списка являются квадратами чисел из первого списка.
+list1 = [1, 2, 3] 
+list2 = [1, 4, 9]
+
+def check_all_squares_in_second(list1, list2):
+    return all(elem in list1 for elem in list2 if elem**2 in list1)
+
+def main():
+    print(f'Первый список: {list1}')
+    print(f'Второй список: {list2}')
+    if check_all_squares_in_second(list1, list2):
+        print('Все элементы второго списка являются квадратами чисел из первого списка.')
+    else:
+        print('Не все элементы второго списка являются квадратами чисел из первого списка.')
+
+main()
+
+# 5. Даны два списка чисел. Проверьте, что сумма всех чисел первого списка содержится во втором списке.
+list1 = [1, 2, 3]
+list2 = [6, 7, 8, 9]
+
+def check_sum_in_second(list1, list2):
+    return sum(list1) in list2
+
+def main():
+    print(f'Первый список: {list1}')
+    print(f'Второй список: {list2}')
+    if check_sum_in_second(list1, list2):
+        print('Сумма всех чисел первого списка содержится во втором списке.')
+    else:
+        print('Сумма всех чисел первого списка не содержится во втором списке.')
+
+main()
+
+# 6. Даны два списка чисел. Проверьте, что произведение всех
+# чисел второго списка содержится в первом списке.
+list1 = [1, 2, 3, 6, 24]
+list2 = [2, 3, 4]
+
+def check_product_in_first(list1, list2):
+    product = 1
+    for num in list2:
+        product *= num
+    return product in list1
+
+def main():
+    print(f'Первый список: {list1}')
+    print(f'Второй список: {list2}')
+    if check_product_in_first(list1, list2):
+        print('Произведение всех чисел второго списка содержится в первом списке.')
+    else:
+        print('Произведение всех чисел второго списка не содержится в первом списке.')
+
+main()
+
+# 7. Даны два списка чисел. Проверьте, что все простые числа из
+# первого списка содержатся во втором списке. 
+# с проверкой на простое число пришлось повозиться немного...
+list1 = [2, 3, 4, 5, 6]
+list2 = [1, 2, 3, 5, 7, 11]
+
+def is_prime(n):
+    if n <= 1:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+def check_all_primes_in_second(list1, list2):
+    return all(elem in list2 for elem in list1 if is_prime(elem))
+
+def main():
+    print(f'Первый список: {list1}')
+    print(f'Второй список: {list2}')
+    if check_all_primes_in_second(list1, list2):
+        print('Все простые числа из первого списка содержатся во втором списке.')
+    else:
+        print('Не все простые числа из первого списка содержатся во втором списке.')
+
+main()
+
+
+# 8. Даны два списка чисел. Проверьте, что хотя бы одно четное
+# число из первого списка содержится во втором списке. 
+list1 = [1, 3, 5, 8]
+list2 = [6, 7, 8, 9, 10]
+
+def check_at_least_one_even_in_second(list1, list2):
+    return any(elem in list2 for elem in list1 if elem % 2 == 0)
+
+def main():
+    print(f'Первый список: {list1}')
+    print(f'Второй список: {list2}')
+    if check_at_least_one_even_in_second(list1, list2):
+        print('Хотя бы одно четное число из первого списка содержится во втором списке.')
+    else:
+        print('Нет четных чисел из первого списка во втором списке.')
+
+main()
+
+# 9. Даны два списка чисел. Проверьте, что сумма всех чисел,
+# содержащихся в обоих списках, присутствует в первом
+# списке.
+list1 = [15, 30, 45, 60]
+list2 = [5, 10, 15]
+
+def check_total_sum_in_first(list1, list2):
+    total_sum = sum(list1) + sum(list2)
+    return total_sum in list1
+
+def main():
+    print(f'Первый список: {list1}')
+    print(f'Второй список: {list2}')
+    if check_total_sum_in_first(list1, list2):
+        print('Сумма всех чисел, содержащихся в обоих списках, присутствует в первом списке.')
+    else:
+        print('Сумма всех чисел, содержащихся в обоих списках, не присутствует в первом списке.')
+
+main()
+
+# 10. Даны два списка чисел. Проверьте, что любой элемент из
+# второго списка делится без остатка на любой элемент из
+# первого списка. 
+list1 = [1, 2, 3]
+list2 = [6, 12, 18]
+
+def check_divisibility(list1, list2):
+    return any(b % a == 0 for a in list1 for b in list2)
+
+def main():
+    print(f'Первый список: {list1}')
+    print(f'Второй список: {list2}')
+    if check_divisibility(list1, list2):
+        print('Любой элемент из второго списка делится без остатка на любой элемент из первого списка.')
+    else:
+        print('Нет такого элемента во втором списке, который делится без остатка на любой элемент из первого списка.')
+
+main()
+
+# 11. Даны два списка чисел. Проверьте, что все элементы
+# первого списка являются чётными и содержатся во втором
+# списке. 
+list1 = [2, 4, 6, 8]
+list2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+def check_all_even_in_second(list1, list2):
+    return all(elem in list2 for elem in list1 if elem % 2 == 0)
+
+def main():
+    print(f'Первый список: {list1}')
+    print(f'Второй список: {list2}')
+    if check_all_even_in_second(list1, list2):
+        print('Все элементы первого списка являются чётными и содержатся во втором списке.')
+    else:
+        print('Не все элементы первого списка являются чётными и содержатся во втором списке.')
+
+main()
+
+# Задачи на key:
+# 1. Дан список чисел. Найдите максимальный элемент по
+# модулю. 
+numbers = [-10, 20, -30, 40, -50]
+
+def find_max_by_absolute_value(numbers):
+    return max(numbers, key=abs)
+
+def main():
+    print(f'Список чисел: {numbers}')
+    max_abs = find_max_by_absolute_value(numbers)
+    print(f'Максимальный элемент по модулю: {max_abs}')
+
+main()
+ 
+#  2. Дан список чисел. Найдите минимальный элемент по модулю. 
+numbers = [-10, 20, -30, 40, -50]
+
+def find_min_by_absolute_value(numbers):
+    return min(numbers, key=abs)
+
+def main():
+    print(f'Список чисел: {numbers}')
+    min_abs = find_min_by_absolute_value(numbers)
+    print(f'Минимальный элемент по модулю: {min_abs}')
+
+main()
+
+# 3. Дан список чисел. Отсортируйте его по возрастанию квадратов чисел. 
+numbers = [1, -2, 3, -4, 5]
+
+def sort_by_squares(numbers):
+    return sorted(numbers, key=lambda x: x**2)
+
+def main():
+    print(f'Исходный список чисел: {numbers}')
+    sorted_numbers = sort_by_squares(numbers)
+    print(f'Список чисел, отсортированный по возрастанию квадратов: {sorted_numbers}')
+
+main()
+
+# 4. Дан список чисел. Отсортируйте его по возрастанию последней цифры чисел. 
+numbers = [15, 22, 37, 41, 56]
+
+def sort_by_last_digit(numbers):
+    return sorted(numbers, key=lambda x: x % 10)
+
+def main():
+    print(f'Исходный список чисел: {numbers}')
+    sorted_numbers = sort_by_last_digit(numbers)
+    print(f'Список чисел, отсортированный по возрастанию последней цифры: {sorted_numbers}')
+
+main()
+
+# 5. Дан список чисел. Найдите элемент с наибольшей суммой цифр. 
+numbers = [123, 456, 789, 234, 567]
+
+def sum_of_digits(n):
+    return sum(int(digit) for digit in str(n))
+
+def find_max_by_digit_sum(numbers):
+    return max(numbers, key=sum_of_digits)
+
+def main():
+    print(f'Список чисел: {numbers}')
+    max_digit_sum = find_max_by_digit_sum(numbers)
+    print(f'Элемент с наибольшей суммой цифр: {max_digit_sum}')
+
+main()
+
+# 6. Дан список чисел. Найдите элемент с наименьшей суммой цифр. numbers = [123, 456, 789, 234, 567]
+# 7. Дан список чисел. Отсортируйте его по возрастанию количества делителей. numbers = [12, 6, 15, 10, 8]
+# 8. Дан список чисел. Найдите максимальный элемент по сумме квадратов его цифр. numbers = [123, 456, 789, 234, 567]
+# 9. Дан список чисел. Найдите минимальный элемент по количеству делителей. numbers = [12, 6, 15, 10, 8]
+# 10. Дан список чисел. Отсортируйте его по возрастанию остатков от деления на 7. numbers = [10, 20, 30, 40, 50]
+# 11. Дан список чисел. Найдите максимальный элемент по количеству уникальных цифр. numbers = [123, 455, 789, 234, 567]
+# 12. Дан список чисел. Найдите минимальный элемент по количеству уникальных цифр. numbers = [123, 455, 789, 234, 567]
+# 13. Дан список чисел. Отсортируйте его по убыванию разницы между числом и его первой цифрой. numbers = [123, 456, 789, 234, 567]
+# 14. Дан список чисел. Найдите максимальный элемент по количеству четных цифр. numbers = [123, 456, 789, 234, 567]
+# 15. Дан список чисел. Найдите минимальный элемент по количеству нечетных цифр. numbers = [123, 456, 789, 234, 567]
